@@ -323,7 +323,7 @@ int ll_deleteLinkedList(LinkedList* this)
 
     if(this != NULL)
     {
-    	if(len == 0)//si el tamaÒo es igual a 0 es porque no hay lista
+    	if(len == 0)//si el tama√±o es igual a 0 es porque no hay lista
     	{
     		returnAux = 1;
     	}
@@ -388,7 +388,7 @@ int ll_isEmpty(LinkedList* this)
     {
     	returnAux = 1;
 
-    	if(len > 0)//si el tamaÒo de la lista es mayor a 0 significa que NO ESTA VACIA
+    	if(len > 0)//si el tama√±o de la lista es mayor a 0 significa que NO ESTA VACIA
     	{
     		returnAux = 0; // y retorno 0
     	}
@@ -595,7 +595,7 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux = -1;
     int len;
-    int recibe;
+    int rtn_pFunc;
     void* aux1 = NULL;
     void* aux2 = NULL;
     void* aux = NULL;
@@ -611,21 +611,25 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     			aux1 = ll_get(this, i);
     			aux2 = ll_get(this, j);
 
-    			recibe = pFunc(aux1, aux2);
+    			rtn_pFunc = pFunc(aux1, aux2);
 
-    			if(order == 0 && recibe < 0)
+    			if(order == 0)//DESCENDENTE
     			{
-    				aux = aux2;
-    				ll_set(this, j, aux1);
-    				ll_set(this, i, aux2);
+    				if(rtn_pFunc < 0)
+    				{
+    					aux = aux2;
+    					ll_set(this, j, aux1);
+    					ll_set(this, i, aux2);
+    				}
+
     			}
     			else
     			{
-    				if(order == 1 && recibe > 0)
+    				if(rtn_pFunc > 0)//ASCENDENTE
     				{
-						aux = aux1;
-						ll_set(this, i, aux2);
-						ll_set(this, j, aux);
+					aux = aux1;
+					ll_set(this, i, aux2);
+					ll_set(this, j, aux);
     				}
 
     			}
