@@ -169,9 +169,9 @@ int ll_add(LinkedList* this, void* pElement)
 
     if(this != NULL)
     {
-    	if(addNode(this, len, pElement) == 0)/// Creo un nodo de esta lista, en esta posicion
-    	{																 	///y con el elemento de mis parametros.
-    		returnAux = 0;
+    	if(addNode(this, len, pElement) == 0)/// Creo un nodo en esta lista, en esta posicion
+    	{				     ///y con el elemento de mis parametros.
+    		returnAux = 0; ///y retorno 0 si todo ok
     	}
     }
 
